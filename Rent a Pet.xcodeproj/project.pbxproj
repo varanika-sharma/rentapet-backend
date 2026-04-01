@@ -1,0 +1,947 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7655BD8C2EFAD2F800CBBBDC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655BD8B2EFAD2F800CBBBDC /* Theme.swift */; };
+		7655BD8F2EFAD30B00CBBBDC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655BD8D2EFAD30B00CBBBDC /* HomeView.swift */; };
+		7655BD902EFAD30B00CBBBDC /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655BD8E2EFAD30B00CBBBDC /* WelcomeView.swift */; };
+		7655BD932EFAD7D900CBBBDC /* SamplePets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655BD922EFAD56200CBBBDC /* SamplePets.swift */; };
+		7655BD942EFAD7E800CBBBDC /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7655BD912EFAD53500CBBBDC /* Pet.swift */; };
+		76B77E282EFADB9C00394257 /* PetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E272EFADB6B00394257 /* PetCardView.swift */; };
+		76B77E322EFAE79A00394257 /* PetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E312EFAE79700394257 /* PetDetailView.swift */; };
+		76B77E342EFAE85500394257 /* PetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E332EFAE84300394257 /* PetListViewModel.swift */; };
+		76B77E382EFB287200394257 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E372EFB286F00394257 /* BookingView.swift */; };
+		76B77E3A2EFB397B00394257 /* BookingConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E392EFB397800394257 /* BookingConfirmationView.swift */; };
+		76B77E3E2EFC332700394257 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E3D2EFC332100394257 /* Booking.swift */; };
+		76B77E412EFC346300394257 /* MyBookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E402EFC346100394257 /* MyBookingsView.swift */; };
+		76B77E432EFC358800394257 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E422EFC358000394257 /* MainTabView.swift */; };
+		76B77E442EFC361900394257 /* BookingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E3F2EFC333900394257 /* BookingStore.swift */; };
+		76B77E462EFC3B3400394257 /* ImageCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E452EFC3B3200394257 /* ImageCarouselView.swift */; };
+		76B77E482EFC3D0300394257 /* PhotoViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E472EFC3D0000394257 /* PhotoViewerView.swift */; };
+		76B77E4A2EFC4ABA00394257 /* AddOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E492EFC4AB600394257 /* AddOn.swift */; };
+		76B77E4C2EFC4AD400394257 /* AddOnCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E4B2EFC4AD200394257 /* AddOnCatalog.swift */; };
+		76B77E512EFC53D800394257 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E502EFC53D600394257 /* AppState.swift */; };
+		76B77E532F009E7B00394257 /* PaymentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E522F009E7800394257 /* PaymentResult.swift */; };
+		76B77E552F009E9C00394257 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E542F009E9800394257 /* PaymentService.swift */; };
+		76B77E5A2F02E71000394257 /* CheckoutAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E592F02E70100394257 /* CheckoutAPI.swift */; };
+		76B77E5D2F02E9BA00394257 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 76B77E5C2F02E9BA00394257 /* Stripe */; };
+		76B77E5F2F02E9BA00394257 /* StripeApplePay in Frameworks */ = {isa = PBXBuildFile; productRef = 76B77E5E2F02E9BA00394257 /* StripeApplePay */; };
+		76B77E612F02E9BA00394257 /* StripeCardScan in Frameworks */ = {isa = PBXBuildFile; productRef = 76B77E602F02E9BA00394257 /* StripeCardScan */; };
+		76B77E632F02E9BA00394257 /* StripeConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 76B77E622F02E9BA00394257 /* StripeConnect */; };
+		76B77E652F02E9BA00394257 /* StripeFinancialConnections in Frameworks */ = {isa = PBXBuildFile; productRef = 76B77E642F02E9BA00394257 /* StripeFinancialConnections */; };
+		76B77E672F02E9BA00394257 /* StripeIdentity in Frameworks */ = {isa = PBXBuildFile; productRef = 76B77E662F02E9BA00394257 /* StripeIdentity */; };
+		76B77E692F02E9BA00394257 /* StripeIssuing in Frameworks */ = {isa = PBXBuildFile; productRef = 76B77E682F02E9BA00394257 /* StripeIssuing */; };
+		76B77E6B2F02E9BA00394257 /* StripePaymentSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 76B77E6A2F02E9BA00394257 /* StripePaymentSheet */; };
+		76B77E6D2F02E9BA00394257 /* StripePayments in Frameworks */ = {isa = PBXBuildFile; productRef = 76B77E6C2F02E9BA00394257 /* StripePayments */; };
+		76B77E6F2F02E9BA00394257 /* StripePaymentsUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76B77E6E2F02E9BA00394257 /* StripePaymentsUI */; };
+		76B77E732F0583F100394257 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E722F0583E000394257 /* Config.swift */; };
+		76B77E752F05842000394257 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E742F05841B00394257 /* RootView.swift */; };
+		76B77E772F05844F00394257 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E762F05844E00394257 /* AuthView.swift */; };
+		76B77E792F05847500394257 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E782F05847300394257 /* KeychainHelper.swift */; };
+		76B77E7B2F05853700394257 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E7A2F05853300394257 /* AuthStore.swift */; };
+		76B77E7D2F05855A00394257 /* SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E7C2F05855800394257 /* SupabaseClient.swift */; };
+		76B77E7F2F05857600394257 /* SupabaseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E7E2F05857500394257 /* SupabaseModels.swift */; };
+		76B77E812F05858E00394257 /* SupabaseAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E802F05858B00394257 /* SupabaseAuthAPI.swift */; };
+		76B77E832F0585A300394257 /* SupabaseProfilesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E822F0585A100394257 /* SupabaseProfilesAPI.swift */; };
+		76B77E852F0585DC00394257 /* PetsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E842F0585DA00394257 /* PetsAPI.swift */; };
+		76B77E872F0585F600394257 /* BookingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E862F0585F400394257 /* BookingsAPI.swift */; };
+		76B77E892F0587C000394257 /* MyPetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E882F0587BE00394257 /* MyPetsView.swift */; };
+		76B77E8B2F0587DC00394257 /* AddPetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E8A2F0587DA00394257 /* AddPetView.swift */; };
+		76B77E8D2F0587F600394257 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E8C2F0587F300394257 /* ProfileView.swift */; };
+		76B77E8F2F05882800394257 /* BookingRequestSentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E8E2F05882600394257 /* BookingRequestSentView.swift */; };
+		76B77E912F084EBC00394257 /* SupabaseHTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E902F084EBA00394257 /* SupabaseHTTP.swift */; };
+		76B77E932F084EE600394257 /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E922F084EE500394257 /* SupabaseConfig.swift */; };
+		76B77E952F0879AA00394257 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E942F0879A900394257 /* Profile.swift */; };
+		76B77E972F09E30700394257 /* SupabaseAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E962F09E30500394257 /* SupabaseAuthResponse.swift */; };
+		76B77E992F0B32C300394257 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E982F0B32C200394257 /* RemoteImageView.swift */; };
+		76B77E9B2F0B32F600394257 /* FullscreenPetImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E9A2F0B32F500394257 /* FullscreenPetImageView.swift */; };
+		76B77E9D2F0C24E400394257 /* BookingWithPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E9C2F0C24E300394257 /* BookingWithPet.swift */; };
+		76B77E9F2F0C253400394257 /* BookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77E9E2F0C253300394257 /* BookingsView.swift */; };
+		76B77EA12F0C254C00394257 /* BookingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77EA02F0C254B00394257 /* BookingRow.swift */; };
+		76B77EA32F0C255E00394257 /* BookingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77EA22F0C255D00394257 /* BookingDetailView.swift */; };
+		76B77EA52F0C380900394257 /* BookingAddOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77EA42F0C380700394257 /* BookingAddOn.swift */; };
+		76B77EA72F0C599100394257 /* SupabaseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B77EA62F0C598400394257 /* SupabaseJSON.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7655BD5A2EFACE2C00CBBBDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7655BD442EFACE2B00CBBBDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7655BD4B2EFACE2B00CBBBDC;
+			remoteInfo = "Rent a Pet";
+		};
+		7655BD642EFACE2C00CBBBDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7655BD442EFACE2B00CBBBDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7655BD4B2EFACE2B00CBBBDC;
+			remoteInfo = "Rent a Pet";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7655BD4C2EFACE2B00CBBBDC /* Rent a Pet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rent a Pet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7655BD592EFACE2C00CBBBDC /* Rent a PetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rent a PetTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7655BD632EFACE2C00CBBBDC /* Rent a PetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rent a PetUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7655BD8B2EFAD2F800CBBBDC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		7655BD8D2EFAD30B00CBBBDC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		7655BD8E2EFAD30B00CBBBDC /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		7655BD912EFAD53500CBBBDC /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
+		7655BD922EFAD56200CBBBDC /* SamplePets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplePets.swift; sourceTree = "<group>"; };
+		76B77E272EFADB6B00394257 /* PetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCardView.swift; sourceTree = "<group>"; };
+		76B77E312EFAE79700394257 /* PetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailView.swift; sourceTree = "<group>"; };
+		76B77E332EFAE84300394257 /* PetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListViewModel.swift; sourceTree = "<group>"; };
+		76B77E372EFB286F00394257 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
+		76B77E392EFB397800394257 /* BookingConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingConfirmationView.swift; sourceTree = "<group>"; };
+		76B77E3D2EFC332100394257 /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
+		76B77E3F2EFC333900394257 /* BookingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingStore.swift; sourceTree = "<group>"; };
+		76B77E402EFC346100394257 /* MyBookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookingsView.swift; sourceTree = "<group>"; };
+		76B77E422EFC358000394257 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		76B77E452EFC3B3200394257 /* ImageCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarouselView.swift; sourceTree = "<group>"; };
+		76B77E472EFC3D0000394257 /* PhotoViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerView.swift; sourceTree = "<group>"; };
+		76B77E492EFC4AB600394257 /* AddOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOn.swift; sourceTree = "<group>"; };
+		76B77E4B2EFC4AD200394257 /* AddOnCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnCatalog.swift; sourceTree = "<group>"; };
+		76B77E502EFC53D600394257 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		76B77E522F009E7800394257 /* PaymentResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentResult.swift; sourceTree = "<group>"; };
+		76B77E542F009E9800394257 /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
+		76B77E592F02E70100394257 /* CheckoutAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutAPI.swift; sourceTree = "<group>"; };
+		76B77E722F0583E000394257 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		76B77E742F05841B00394257 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		76B77E762F05844E00394257 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		76B77E782F05847300394257 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		76B77E7A2F05853300394257 /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
+		76B77E7C2F05855800394257 /* SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
+		76B77E7E2F05857500394257 /* SupabaseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseModels.swift; sourceTree = "<group>"; };
+		76B77E802F05858B00394257 /* SupabaseAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseAuthAPI.swift; sourceTree = "<group>"; };
+		76B77E822F0585A100394257 /* SupabaseProfilesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseProfilesAPI.swift; sourceTree = "<group>"; };
+		76B77E842F0585DA00394257 /* PetsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsAPI.swift; sourceTree = "<group>"; };
+		76B77E862F0585F400394257 /* BookingsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsAPI.swift; sourceTree = "<group>"; };
+		76B77E882F0587BE00394257 /* MyPetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetsView.swift; sourceTree = "<group>"; };
+		76B77E8A2F0587DA00394257 /* AddPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetView.swift; sourceTree = "<group>"; };
+		76B77E8C2F0587F300394257 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		76B77E8E2F05882600394257 /* BookingRequestSentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestSentView.swift; sourceTree = "<group>"; };
+		76B77E902F084EBA00394257 /* SupabaseHTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseHTTP.swift; sourceTree = "<group>"; };
+		76B77E922F084EE500394257 /* SupabaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
+		76B77E942F0879A900394257 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		76B77E962F09E30500394257 /* SupabaseAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseAuthResponse.swift; sourceTree = "<group>"; };
+		76B77E982F0B32C200394257 /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
+		76B77E9A2F0B32F500394257 /* FullscreenPetImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenPetImageView.swift; sourceTree = "<group>"; };
+		76B77E9C2F0C24E300394257 /* BookingWithPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingWithPet.swift; sourceTree = "<group>"; };
+		76B77E9E2F0C253300394257 /* BookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsView.swift; sourceTree = "<group>"; };
+		76B77EA02F0C254B00394257 /* BookingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRow.swift; sourceTree = "<group>"; };
+		76B77EA22F0C255D00394257 /* BookingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetailView.swift; sourceTree = "<group>"; };
+		76B77EA42F0C380700394257 /* BookingAddOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingAddOn.swift; sourceTree = "<group>"; };
+		76B77EA62F0C598400394257 /* SupabaseJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseJSON.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		7655BD4E2EFACE2B00CBBBDC /* Rent a Pet */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Rent a Pet";
+			sourceTree = "<group>";
+		};
+		7655BD5C2EFACE2C00CBBBDC /* Rent a PetTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Rent a PetTests";
+			sourceTree = "<group>";
+		};
+		7655BD662EFACE2C00CBBBDC /* Rent a PetUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Rent a PetUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7655BD492EFACE2B00CBBBDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76B77E6D2F02E9BA00394257 /* StripePayments in Frameworks */,
+				76B77E6B2F02E9BA00394257 /* StripePaymentSheet in Frameworks */,
+				76B77E652F02E9BA00394257 /* StripeFinancialConnections in Frameworks */,
+				76B77E612F02E9BA00394257 /* StripeCardScan in Frameworks */,
+				76B77E5D2F02E9BA00394257 /* Stripe in Frameworks */,
+				76B77E672F02E9BA00394257 /* StripeIdentity in Frameworks */,
+				76B77E632F02E9BA00394257 /* StripeConnect in Frameworks */,
+				76B77E5F2F02E9BA00394257 /* StripeApplePay in Frameworks */,
+				76B77E6F2F02E9BA00394257 /* StripePaymentsUI in Frameworks */,
+				76B77E692F02E9BA00394257 /* StripeIssuing in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7655BD562EFACE2C00CBBBDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7655BD602EFACE2C00CBBBDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7655BD432EFACE2B00CBBBDC = {
+			isa = PBXGroup;
+			children = (
+				76B77E4D2EFC4D1900394257 /* Environment */,
+				7655BD7C2EFAD0B700CBBBDC /* Resources */,
+				7655BD7B2EFAD0B100CBBBDC /* Services */,
+				7655BD7A2EFAD0A900CBBBDC /* ViewModels */,
+				7655BD792EFAD0A100CBBBDC /* Models */,
+				7655BD782EFAD09300CBBBDC /* Components */,
+				7655BD772EFAD08B00CBBBDC /* App */,
+				7655BD762EFAD02C00CBBBDC /* Views */,
+				7655BD4E2EFACE2B00CBBBDC /* Rent a Pet */,
+				7655BD5C2EFACE2C00CBBBDC /* Rent a PetTests */,
+				7655BD662EFACE2C00CBBBDC /* Rent a PetUITests */,
+				7655BD4D2EFACE2B00CBBBDC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7655BD4D2EFACE2B00CBBBDC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7655BD4C2EFACE2B00CBBBDC /* Rent a Pet.app */,
+				7655BD592EFACE2C00CBBBDC /* Rent a PetTests.xctest */,
+				7655BD632EFACE2C00CBBBDC /* Rent a PetUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7655BD762EFAD02C00CBBBDC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				76B77EA22F0C255D00394257 /* BookingDetailView.swift */,
+				76B77E9E2F0C253300394257 /* BookingsView.swift */,
+				76B77E9A2F0B32F500394257 /* FullscreenPetImageView.swift */,
+				76B77E8E2F05882600394257 /* BookingRequestSentView.swift */,
+				76B77E8C2F0587F300394257 /* ProfileView.swift */,
+				76B77E8A2F0587DA00394257 /* AddPetView.swift */,
+				76B77E882F0587BE00394257 /* MyPetsView.swift */,
+				76B77E762F05844E00394257 /* AuthView.swift */,
+				76B77E742F05841B00394257 /* RootView.swift */,
+				76B77E472EFC3D0000394257 /* PhotoViewerView.swift */,
+				76B77E422EFC358000394257 /* MainTabView.swift */,
+				76B77E402EFC346100394257 /* MyBookingsView.swift */,
+				76B77E392EFB397800394257 /* BookingConfirmationView.swift */,
+				76B77E372EFB286F00394257 /* BookingView.swift */,
+				76B77E312EFAE79700394257 /* PetDetailView.swift */,
+				7655BD8D2EFAD30B00CBBBDC /* HomeView.swift */,
+				7655BD8E2EFAD30B00CBBBDC /* WelcomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7655BD772EFAD08B00CBBBDC /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		7655BD782EFAD09300CBBBDC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				76B77EA02F0C254B00394257 /* BookingRow.swift */,
+				76B77E982F0B32C200394257 /* RemoteImageView.swift */,
+				76B77E452EFC3B3200394257 /* ImageCarouselView.swift */,
+				76B77E272EFADB6B00394257 /* PetCardView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		7655BD792EFAD0A100CBBBDC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				76B77EA42F0C380700394257 /* BookingAddOn.swift */,
+				76B77E9C2F0C24E300394257 /* BookingWithPet.swift */,
+				76B77E942F0879A900394257 /* Profile.swift */,
+				76B77E522F009E7800394257 /* PaymentResult.swift */,
+				76B77E492EFC4AB600394257 /* AddOn.swift */,
+				76B77E3D2EFC332100394257 /* Booking.swift */,
+				7655BD922EFAD56200CBBBDC /* SamplePets.swift */,
+				7655BD912EFAD53500CBBBDC /* Pet.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7655BD7A2EFAD0A900CBBBDC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				76B77E332EFAE84300394257 /* PetListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7655BD7B2EFAD0B100CBBBDC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				76B77EA62F0C598400394257 /* SupabaseJSON.swift */,
+				76B77E962F09E30500394257 /* SupabaseAuthResponse.swift */,
+				76B77E922F084EE500394257 /* SupabaseConfig.swift */,
+				76B77E902F084EBA00394257 /* SupabaseHTTP.swift */,
+				76B77E862F0585F400394257 /* BookingsAPI.swift */,
+				76B77E842F0585DA00394257 /* PetsAPI.swift */,
+				76B77E822F0585A100394257 /* SupabaseProfilesAPI.swift */,
+				76B77E802F05858B00394257 /* SupabaseAuthAPI.swift */,
+				76B77E7E2F05857500394257 /* SupabaseModels.swift */,
+				76B77E7C2F05855800394257 /* SupabaseClient.swift */,
+				76B77E7A2F05853300394257 /* AuthStore.swift */,
+				76B77E782F05847300394257 /* KeychainHelper.swift */,
+				76B77E722F0583E000394257 /* Config.swift */,
+				76B77E592F02E70100394257 /* CheckoutAPI.swift */,
+				76B77E542F009E9800394257 /* PaymentService.swift */,
+				76B77E4B2EFC4AD200394257 /* AddOnCatalog.swift */,
+				76B77E3F2EFC333900394257 /* BookingStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7655BD7C2EFAD0B700CBBBDC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7655BD8B2EFAD2F800CBBBDC /* Theme.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		76B77E4D2EFC4D1900394257 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				76B77E502EFC53D600394257 /* AppState.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7655BD4B2EFACE2B00CBBBDC /* Rent a Pet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7655BD6D2EFACE2C00CBBBDC /* Build configuration list for PBXNativeTarget "Rent a Pet" */;
+			buildPhases = (
+				7655BD482EFACE2B00CBBBDC /* Sources */,
+				7655BD492EFACE2B00CBBBDC /* Frameworks */,
+				7655BD4A2EFACE2B00CBBBDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				7655BD4E2EFACE2B00CBBBDC /* Rent a Pet */,
+			);
+			name = "Rent a Pet";
+			packageProductDependencies = (
+				76B77E5C2F02E9BA00394257 /* Stripe */,
+				76B77E5E2F02E9BA00394257 /* StripeApplePay */,
+				76B77E602F02E9BA00394257 /* StripeCardScan */,
+				76B77E622F02E9BA00394257 /* StripeConnect */,
+				76B77E642F02E9BA00394257 /* StripeFinancialConnections */,
+				76B77E662F02E9BA00394257 /* StripeIdentity */,
+				76B77E682F02E9BA00394257 /* StripeIssuing */,
+				76B77E6A2F02E9BA00394257 /* StripePaymentSheet */,
+				76B77E6C2F02E9BA00394257 /* StripePayments */,
+				76B77E6E2F02E9BA00394257 /* StripePaymentsUI */,
+			);
+			productName = "Rent a Pet";
+			productReference = 7655BD4C2EFACE2B00CBBBDC /* Rent a Pet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7655BD582EFACE2C00CBBBDC /* Rent a PetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7655BD702EFACE2C00CBBBDC /* Build configuration list for PBXNativeTarget "Rent a PetTests" */;
+			buildPhases = (
+				7655BD552EFACE2C00CBBBDC /* Sources */,
+				7655BD562EFACE2C00CBBBDC /* Frameworks */,
+				7655BD572EFACE2C00CBBBDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7655BD5B2EFACE2C00CBBBDC /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				7655BD5C2EFACE2C00CBBBDC /* Rent a PetTests */,
+			);
+			name = "Rent a PetTests";
+			packageProductDependencies = (
+			);
+			productName = "Rent a PetTests";
+			productReference = 7655BD592EFACE2C00CBBBDC /* Rent a PetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7655BD622EFACE2C00CBBBDC /* Rent a PetUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7655BD732EFACE2C00CBBBDC /* Build configuration list for PBXNativeTarget "Rent a PetUITests" */;
+			buildPhases = (
+				7655BD5F2EFACE2C00CBBBDC /* Sources */,
+				7655BD602EFACE2C00CBBBDC /* Frameworks */,
+				7655BD612EFACE2C00CBBBDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7655BD652EFACE2C00CBBBDC /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				7655BD662EFACE2C00CBBBDC /* Rent a PetUITests */,
+			);
+			name = "Rent a PetUITests";
+			packageProductDependencies = (
+			);
+			productName = "Rent a PetUITests";
+			productReference = 7655BD632EFACE2C00CBBBDC /* Rent a PetUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7655BD442EFACE2B00CBBBDC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					7655BD4B2EFACE2B00CBBBDC = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					7655BD582EFACE2C00CBBBDC = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 7655BD4B2EFACE2B00CBBBDC;
+					};
+					7655BD622EFACE2C00CBBBDC = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 7655BD4B2EFACE2B00CBBBDC;
+					};
+				};
+			};
+			buildConfigurationList = 7655BD472EFACE2B00CBBBDC /* Build configuration list for PBXProject "Rent a Pet" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7655BD432EFACE2B00CBBBDC;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				76B77E5B2F02E9BA00394257 /* XCRemoteSwiftPackageReference "stripe-ios" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 7655BD4D2EFACE2B00CBBBDC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7655BD4B2EFACE2B00CBBBDC /* Rent a Pet */,
+				7655BD582EFACE2C00CBBBDC /* Rent a PetTests */,
+				7655BD622EFACE2C00CBBBDC /* Rent a PetUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7655BD4A2EFACE2B00CBBBDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7655BD572EFACE2C00CBBBDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7655BD612EFACE2C00CBBBDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7655BD482EFACE2B00CBBBDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76B77EA12F0C254C00394257 /* BookingRow.swift in Sources */,
+				76B77E3A2EFB397B00394257 /* BookingConfirmationView.swift in Sources */,
+				76B77E3E2EFC332700394257 /* Booking.swift in Sources */,
+				76B77E992F0B32C300394257 /* RemoteImageView.swift in Sources */,
+				7655BD8F2EFAD30B00CBBBDC /* HomeView.swift in Sources */,
+				76B77EA52F0C380900394257 /* BookingAddOn.swift in Sources */,
+				7655BD902EFAD30B00CBBBDC /* WelcomeView.swift in Sources */,
+				76B77E8B2F0587DC00394257 /* AddPetView.swift in Sources */,
+				76B77E792F05847500394257 /* KeychainHelper.swift in Sources */,
+				76B77E8D2F0587F600394257 /* ProfileView.swift in Sources */,
+				76B77E5A2F02E71000394257 /* CheckoutAPI.swift in Sources */,
+				76B77E832F0585A300394257 /* SupabaseProfilesAPI.swift in Sources */,
+				76B77E932F084EE600394257 /* SupabaseConfig.swift in Sources */,
+				76B77E732F0583F100394257 /* Config.swift in Sources */,
+				76B77E752F05842000394257 /* RootView.swift in Sources */,
+				7655BD932EFAD7D900CBBBDC /* SamplePets.swift in Sources */,
+				76B77E7B2F05853700394257 /* AuthStore.swift in Sources */,
+				7655BD942EFAD7E800CBBBDC /* Pet.swift in Sources */,
+				76B77E412EFC346300394257 /* MyBookingsView.swift in Sources */,
+				76B77E382EFB287200394257 /* BookingView.swift in Sources */,
+				76B77E4A2EFC4ABA00394257 /* AddOn.swift in Sources */,
+				76B77E512EFC53D800394257 /* AppState.swift in Sources */,
+				76B77E9B2F0B32F600394257 /* FullscreenPetImageView.swift in Sources */,
+				76B77E322EFAE79A00394257 /* PetDetailView.swift in Sources */,
+				76B77E7F2F05857600394257 /* SupabaseModels.swift in Sources */,
+				76B77EA32F0C255E00394257 /* BookingDetailView.swift in Sources */,
+				76B77E442EFC361900394257 /* BookingStore.swift in Sources */,
+				76B77E772F05844F00394257 /* AuthView.swift in Sources */,
+				76B77E532F009E7B00394257 /* PaymentResult.swift in Sources */,
+				76B77E952F0879AA00394257 /* Profile.swift in Sources */,
+				76B77E282EFADB9C00394257 /* PetCardView.swift in Sources */,
+				76B77E852F0585DC00394257 /* PetsAPI.swift in Sources */,
+				76B77E432EFC358800394257 /* MainTabView.swift in Sources */,
+				76B77E342EFAE85500394257 /* PetListViewModel.swift in Sources */,
+				76B77E8F2F05882800394257 /* BookingRequestSentView.swift in Sources */,
+				76B77E9D2F0C24E400394257 /* BookingWithPet.swift in Sources */,
+				76B77EA72F0C599100394257 /* SupabaseJSON.swift in Sources */,
+				76B77E462EFC3B3400394257 /* ImageCarouselView.swift in Sources */,
+				76B77E912F084EBC00394257 /* SupabaseHTTP.swift in Sources */,
+				76B77E4C2EFC4AD400394257 /* AddOnCatalog.swift in Sources */,
+				7655BD8C2EFAD2F800CBBBDC /* Theme.swift in Sources */,
+				76B77E812F05858E00394257 /* SupabaseAuthAPI.swift in Sources */,
+				76B77E972F09E30700394257 /* SupabaseAuthResponse.swift in Sources */,
+				76B77E9F2F0C253400394257 /* BookingsView.swift in Sources */,
+				76B77E552F009E9C00394257 /* PaymentService.swift in Sources */,
+				76B77E7D2F05855A00394257 /* SupabaseClient.swift in Sources */,
+				76B77E872F0585F600394257 /* BookingsAPI.swift in Sources */,
+				76B77E482EFC3D0300394257 /* PhotoViewerView.swift in Sources */,
+				76B77E892F0587C000394257 /* MyPetsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7655BD552EFACE2C00CBBBDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7655BD5F2EFACE2C00CBBBDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7655BD5B2EFACE2C00CBBBDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7655BD4B2EFACE2B00CBBBDC /* Rent a Pet */;
+			targetProxy = 7655BD5A2EFACE2C00CBBBDC /* PBXContainerItemProxy */;
+		};
+		7655BD652EFACE2C00CBBBDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7655BD4B2EFACE2B00CBBBDC /* Rent a Pet */;
+			targetProxy = 7655BD642EFACE2C00CBBBDC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7655BD6B2EFACE2C00CBBBDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = NNYANAV5W6;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7655BD6C2EFACE2C00CBBBDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = NNYANAV5W6;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7655BD6E2EFACE2C00CBBBDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Rent a Pet/Rent a Pet.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NNYANAV5W6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Rent-a-Pet-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.VS.Rent-a-Pet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7655BD6F2EFACE2C00CBBBDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Rent a Pet/Rent a Pet.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NNYANAV5W6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Rent-a-Pet-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.VS.Rent-a-Pet";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7655BD712EFACE2C00CBBBDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NNYANAV5W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.VS.Rent-a-PetTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rent a Pet.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Rent a Pet";
+			};
+			name = Debug;
+		};
+		7655BD722EFACE2C00CBBBDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NNYANAV5W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.VS.Rent-a-PetTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rent a Pet.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Rent a Pet";
+			};
+			name = Release;
+		};
+		7655BD742EFACE2C00CBBBDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NNYANAV5W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.VS.Rent-a-PetUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Rent a Pet";
+			};
+			name = Debug;
+		};
+		7655BD752EFACE2C00CBBBDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NNYANAV5W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.VS.Rent-a-PetUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Rent a Pet";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7655BD472EFACE2B00CBBBDC /* Build configuration list for PBXProject "Rent a Pet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7655BD6B2EFACE2C00CBBBDC /* Debug */,
+				7655BD6C2EFACE2C00CBBBDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7655BD6D2EFACE2C00CBBBDC /* Build configuration list for PBXNativeTarget "Rent a Pet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7655BD6E2EFACE2C00CBBBDC /* Debug */,
+				7655BD6F2EFACE2C00CBBBDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7655BD702EFACE2C00CBBBDC /* Build configuration list for PBXNativeTarget "Rent a PetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7655BD712EFACE2C00CBBBDC /* Debug */,
+				7655BD722EFACE2C00CBBBDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7655BD732EFACE2C00CBBBDC /* Build configuration list for PBXNativeTarget "Rent a PetUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7655BD742EFACE2C00CBBBDC /* Debug */,
+				7655BD752EFACE2C00CBBBDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		76B77E5B2F02E9BA00394257 /* XCRemoteSwiftPackageReference "stripe-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 25.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		76B77E5C2F02E9BA00394257 /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B77E5B2F02E9BA00394257 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = Stripe;
+		};
+		76B77E5E2F02E9BA00394257 /* StripeApplePay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B77E5B2F02E9BA00394257 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripeApplePay;
+		};
+		76B77E602F02E9BA00394257 /* StripeCardScan */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B77E5B2F02E9BA00394257 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripeCardScan;
+		};
+		76B77E622F02E9BA00394257 /* StripeConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B77E5B2F02E9BA00394257 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripeConnect;
+		};
+		76B77E642F02E9BA00394257 /* StripeFinancialConnections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B77E5B2F02E9BA00394257 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripeFinancialConnections;
+		};
+		76B77E662F02E9BA00394257 /* StripeIdentity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B77E5B2F02E9BA00394257 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripeIdentity;
+		};
+		76B77E682F02E9BA00394257 /* StripeIssuing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B77E5B2F02E9BA00394257 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripeIssuing;
+		};
+		76B77E6A2F02E9BA00394257 /* StripePaymentSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B77E5B2F02E9BA00394257 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripePaymentSheet;
+		};
+		76B77E6C2F02E9BA00394257 /* StripePayments */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B77E5B2F02E9BA00394257 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripePayments;
+		};
+		76B77E6E2F02E9BA00394257 /* StripePaymentsUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B77E5B2F02E9BA00394257 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripePaymentsUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 7655BD442EFACE2B00CBBBDC /* Project object */;
+}
