@@ -7,9 +7,15 @@ app.use(cors());
 app.use(express.json());
 
 const secretKey = process.env.STRIPE_SECRET_KEY;
+const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+
 if (!secretKey) {
-  console.error("Missing STRIPE_SECRET_KEY. Set it like:");
-  console.error('export STRIPE_SECRET_KEY="sk_test_..."');
+  console.error("Missing STRIPE_SECRET_KEY");
+  process.exit(1);
+}
+
+if (!publishableKey) {
+  console.error("Missing STRIPE_PUBLISHABLE_KEY");
   process.exit(1);
 }
 
@@ -21,30 +27,45 @@ app.get("/", (req, res) => {
 
 app.post("/create-payment-intent", async (req, res) => {
   try {
-    const { amount, currency } = req.body;
+    const {
+      amount,
+      currency = "usd",
+      petId,
+      renterId,
+      startDate,
+      endDate
+    } = req.body;
 
     if (typeof amount !== "number" || amount < 50) {
       return res.status(400).json({
-        error: "Invalid amount. Use smallest currency unit (e.g. cents). Minimum 50."
+        error: "Invalid amount. Use the smallest currency unit, like cents. Minimum is 50."
       });
-    }
-    if (typeof currency !== "string" || !currency.length) {
-      return res.status(400).json({ error: "Invalid currency. Example: 'usd'." });
     }
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency,
-      automatic_payment_methods: { enabled: true }
+      payment_method_types: ["card"],
+      metadata: {
+        pet_id: petId ?? "",
+        renter_id: renterId ?? "",
+        start_date: startDate ?? "",
+        end_date: endDate ?? ""
+      }
     });
 
-    res.json({ paymentIntentClientSecret: paymentIntent.client_secret });
+    res.json({
+      publishableKey,
+      paymentIntentClientSecret: paymentIntent.client_secret,
+      paymentIntentId: paymentIntent.id
+    });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: err.message || "Server error" });
+    res.status(500).json({
+      error: err.message || "Server error"
+    });
   }
 });
 
 const PORT = process.env.PORT || 4242;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
-
