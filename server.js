@@ -67,5 +67,33 @@ app.post("/create-payment-intent", async (req, res) => {
   }
 });
 
+app.post("/refund-payment", async (req, res) => {
+  try {
+    const { paymentIntentId, reason = "requested_by_customer" } = req.body;
+
+    if (!paymentIntentId || typeof paymentIntentId !== "string") {
+      return res.status(400).json({
+        error: "paymentIntentId is required."
+      });
+    }
+
+    const refund = await stripe.refunds.create({
+      payment_intent: paymentIntentId,
+      reason
+    });
+
+    res.json({
+      ok: true,
+      refundId: refund.id,
+      status: refund.status
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      error: err.message || "Refund failed"
+    });
+  }
+});
+
 const PORT = process.env.PORT || 4242;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
