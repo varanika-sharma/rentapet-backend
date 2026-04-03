@@ -29,7 +29,7 @@ app.post("/create-payment-intent", async (req, res) => {
   try {
     const {
       amount,
-      currency = "usd",
+      currency,
       petId,
       renterId,
       startDate,
@@ -38,19 +38,25 @@ app.post("/create-payment-intent", async (req, res) => {
 
     if (typeof amount !== "number" || amount < 50) {
       return res.status(400).json({
-        error: "Invalid amount. Use the smallest currency unit, like cents. Minimum is 50."
+        error: "Invalid amount. Use cents. Minimum 50."
+      });
+    }
+
+    if (typeof currency !== "string" || !currency.length) {
+      return res.status(400).json({
+        error: "Invalid currency."
       });
     }
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency,
-      payment_method_types: ["card"],
+      automatic_payment_methods: { enabled: true },
       metadata: {
-        pet_id: petId ?? "",
-        renter_id: renterId ?? "",
-        start_date: startDate ?? "",
-        end_date: endDate ?? ""
+        petId: petId ?? "",
+        renterId: renterId ?? "",
+        startDate: startDate ?? "",
+        endDate: endDate ?? ""
       }
     });
 
@@ -60,40 +66,14 @@ app.post("/create-payment-intent", async (req, res) => {
       paymentIntentId: paymentIntent.id
     });
   } catch (err) {
-    console.error(err);
+    console.error("create-payment-intent error:", err);
     res.status(500).json({
       error: err.message || "Server error"
     });
   }
 });
 
-app.post("/refund-payment", async (req, res) => {
-  try {
-    const { paymentIntentId, reason = "requested_by_customer" } = req.body;
-
-    if (!paymentIntentId || typeof paymentIntentId !== "string") {
-      return res.status(400).json({
-        error: "paymentIntentId is required."
-      });
-    }
-
-    const refund = await stripe.refunds.create({
-      payment_intent: paymentIntentId,
-      reason
-    });
-
-    res.json({
-      ok: true,
-      refundId: refund.id,
-      status: refund.status
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({
-      error: err.message || "Refund failed"
-    });
-  }
-});
-
 const PORT = process.env.PORT || 4242;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
