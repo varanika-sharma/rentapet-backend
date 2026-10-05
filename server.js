@@ -4,6 +4,8 @@ import Stripe from "stripe";
 
 const app = express();
 
+// MARK: - Environment
+
 const secretKey = process.env.STRIPE_SECRET_KEY;
 const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
 
@@ -31,26 +33,26 @@ if (!publishableKey) {
 
 const stripe = new Stripe(secretKey);
 
-app.use(cors());
-
-
-// ======================================================
-// STRIPE IDENTITY WEBHOOK
-// IMPORTANT: Must come BEFORE express.json()
-// ======================================================
+// MARK: - Stripe Webhook
+//
+// IMPORTANT:
+// This route must come BEFORE express.json().
+// Stripe needs the raw request body to verify
+// the webhook signature.
 
 app.post(
   "/stripe-webhook",
-  express.raw({ type: "application/json" }),
+  express.raw({
+    type: "application/json"
+  }),
   async (req, res) => {
-
     if (!stripeWebhookSecret) {
       console.error(
         "Missing STRIPE_WEBHOOK_SECRET"
       );
 
       return res.status(500).send(
-        "Webhook not configured"
+        "Webhook configuration missing."
       );
     }
 
@@ -59,7 +61,7 @@ app.post(
 
     if (!signature) {
       return res.status(400).send(
-        "Missing Stripe signature"
+        "Missing Stripe signature."
       );
     }
 
@@ -72,148 +74,84 @@ app.post(
           signature,
           stripeWebhookSecret
         );
-
-    } catch (err) {
-
+    } catch (error) {
       console.error(
-        "Webhook signature verification failed:",
-        err.message
+        "Stripe webhook signature error:",
+        error.message
       );
 
       return res.status(400).send(
-        "Invalid webhook signature"
+        `Webhook Error: ${error.message}`
       );
     }
 
     try {
-
       switch (event.type) {
+        case "identity.verification_session.verified": {
+          const session = event.data.object;
 
-        case
-          "identity.verification_session.verified": {
-
-          const session =
-            event.data.object;
-
-          const userId =
-            session.metadata?.user_id;
-
-          if (!userId) {
-            console.error(
-              "Verified session missing user_id:",
-              session.id
-            );
-
-            return res.status(400).json({
-              error:
-                "Verification session missing user ID"
-            });
-          }
-
-          await updateIdentityStatus(
-            userId,
+          await handleIdentityStatusChange(
+            session,
             "verified"
           );
 
-          console.log(
-            "Identity verified:",
-            userId,
-            session.id
+          break;
+        }
+
+        case "identity.verification_session.processing": {
+          const session = event.data.object;
+
+          await handleIdentityStatusChange(
+            session,
+            "processing"
           );
 
           break;
         }
 
+        case "identity.verification_session.requires_input": {
+          const session = event.data.object;
 
-        case
-          "identity.verification_session.processing": {
-
-          const session =
-            event.data.object;
-
-          const userId =
-            session.metadata?.user_id;
-
-          if (userId) {
-            await updateIdentityStatus(
-              userId,
-              "processing"
-            );
-          }
-
-          console.log(
-            "Identity processing:",
-            userId ?? "unknown user"
+          await handleIdentityStatusChange(
+            session,
+            "requires_input"
           );
 
           break;
         }
-
-
-        case
-          "identity.verification_session.requires_input": {
-
-          const session =
-            event.data.object;
-
-          const userId =
-            session.metadata?.user_id;
-
-          if (userId) {
-            await updateIdentityStatus(
-              userId,
-              "requires_input"
-            );
-          }
-
-          console.log(
-            "Identity requires input:",
-            userId ?? "unknown user",
-            session.last_error?.code ??
-              "unknown reason"
-          );
-
-          break;
-        }
-
 
         default:
-          break;
+          console.log(
+            `Unhandled Stripe event: ${event.type}`
+          );
       }
 
       return res.json({
         received: true
       });
-
-    } catch (err) {
-
+    } catch (error) {
       console.error(
         "Stripe webhook processing error:",
-        err
+        error
       );
 
       return res.status(500).json({
         error:
-          "Webhook processing failed"
+          error.message ||
+          "Webhook processing failed."
       });
     }
   }
 );
 
+// MARK: - Standard Middleware
 
-// ======================================================
-// NORMAL JSON ROUTES
-// ======================================================
-
+app.use(cors());
 app.use(express.json());
 
-
-// ======================================================
-// HEALTH CHECK
-// ======================================================
+// MARK: - Health Check
 
 app.get("/", (req, res) => {
-
   res.json({
     ok: true,
     message:
@@ -221,17 +159,12 @@ app.get("/", (req, res) => {
   });
 });
 
-
-// ======================================================
-// EXISTING PAYMENT INTENT
-// ======================================================
+// MARK: - Payments
 
 app.post(
   "/create-payment-intent",
   async (req, res) => {
-
     try {
-
       const {
         amount,
         currency,
@@ -241,36 +174,28 @@ app.post(
         endDate
       } = req.body;
 
-
       if (
         typeof amount !== "number" ||
         amount < 50
       ) {
-
         return res.status(400).json({
           error:
             "Invalid amount. Use cents. Minimum 50."
         });
       }
 
-
       if (
         typeof currency !== "string" ||
         !currency.length
       ) {
-
         return res.status(400).json({
-          error:
-            "Invalid currency."
+          error: "Invalid currency."
         });
       }
 
-
       const paymentIntent =
         await stripe.paymentIntents.create({
-
           amount,
-
           currency,
 
           automatic_payment_methods: {
@@ -285,9 +210,7 @@ app.post(
           }
         });
 
-
-      res.json({
-
+      return res.json({
         publishableKey,
 
         paymentIntentClientSecret:
@@ -296,53 +219,48 @@ app.post(
         paymentIntentId:
           paymentIntent.id
       });
-
-
-    } catch (err) {
-
+    } catch (error) {
       console.error(
         "create-payment-intent error:",
-        err
+        error
       );
 
-      res.status(500).json({
+      return res.status(500).json({
         error:
-          err.message ||
+          error.message ||
           "Server error"
       });
     }
   }
 );
 
-
-// ======================================================
-// CREATE IDENTITY VERIFICATION SESSION
-// ======================================================
+// MARK: - Identity Verification
 
 app.post(
   "/identity/create-verification-session",
   requireSupabaseUser,
   async (req, res) => {
-
     try {
+      requireSupabaseServerConfig();
 
       const user =
         req.supabaseUser;
 
+      console.log(
+        "Creating Identity verification session for:",
+        user.id
+      );
 
       const verificationSession =
         await stripe.identity
           .verificationSessions
           .create({
-
             type: "document",
 
-            provided_details:
-              user.email
-                ? {
-                    email: user.email
-                  }
-                : undefined,
+            provided_details: {
+              email:
+                user.email || undefined
+            },
 
             options: {
               document: {
@@ -356,79 +274,70 @@ app.post(
             }
           });
 
-
-      /*
-       Create a short-lived key specifically
-       for this Verification Session.
-      */
+      //
+      // Stripe requires an explicit API version
+      // when creating an ephemeral key.
+      //
+      // This matches the Stripe API version
+      // currently configured for the Rent a Pet
+      // Identity integration.
+      //
 
       const ephemeralKey =
         await stripe.ephemeralKeys.create(
           {
             verification_session:
               verificationSession.id
+          },
+          {
+            apiVersion:
+              "2025-12-15.clover"
           }
         );
-
-
-      /*
-       Starting verification is allowed to
-       mark the account pending.
-
-       Only the signed Stripe webhook can
-       mark the account VERIFIED.
-      */
 
       await updateIdentityStatus(
         user.id,
         "pending"
       );
 
+      console.log(
+        "Identity verification session created:",
+        verificationSession.id
+      );
 
-      res.json({
-
+      return res.json({
         verificationSessionId:
           verificationSession.id,
 
         ephemeralKeySecret:
           ephemeralKey.secret
       });
-
-
-    } catch (err) {
-
+    } catch (error) {
       console.error(
         "create identity verification error:",
-        err
+        error
       );
 
-      res.status(500).json({
+      return res.status(500).json({
         error:
-          err.message ||
-          "Unable to begin identity verification."
+          error.message ||
+          "Unable to create identity verification session."
       });
     }
   }
 );
 
-
-// ======================================================
-// IDENTITY STATUS
-// ======================================================
+// MARK: - Identity Status
 
 app.get(
   "/identity/status",
   requireSupabaseUser,
   async (req, res) => {
-
     try {
-
       requireSupabaseServerConfig();
-
 
       const userId =
         req.supabaseUser.id;
-
 
       const url =
         new URL(
@@ -445,10 +354,8 @@ app.get(
         "identity_verification_status"
       );
 
-
       const response =
         await fetch(url, {
-
           method: "GET",
 
           headers: {
@@ -456,82 +363,74 @@ app.get(
               supabaseServiceRoleKey,
 
             Authorization:
-              `Bearer ${supabaseServiceRoleKey}`
+              `Bearer ${supabaseServiceRoleKey}`,
+
+            Accept:
+              "application/json"
           }
         });
 
+      const text =
+        await response.text();
 
       if (!response.ok) {
-
-        const text =
-          await response.text();
-
         throw new Error(
-          `Supabase status lookup failed: ${text}`
+          `Supabase status lookup failed (${response.status}): ${text}`
         );
       }
 
+      const profiles =
+        text
+          ? JSON.parse(text)
+          : [];
 
-      const rows =
-        await response.json();
+      const status =
+        profiles[0]
+          ?.identity_verification_status ??
+        "not_started";
 
-
-      res.json({
-        status:
-          rows[0]
-            ?.identity_verification_status ??
-          "not_started"
+      return res.json({
+        status
       });
-
-
-    } catch (err) {
-
+    } catch (error) {
       console.error(
         "identity status error:",
-        err
+        error
       );
 
-      res.status(500).json({
+      return res.status(500).json({
         error:
-          err.message ||
-          "Unable to retrieve identity status."
+          error.message ||
+          "Unable to retrieve identity verification status."
       });
     }
   }
 );
 
-
-// ======================================================
-// SUPABASE AUTHENTICATION
-// ======================================================
+// MARK: - Supabase Authentication
 
 async function requireSupabaseUser(
   req,
   res,
   next
 ) {
-
   try {
-
     if (
       !supabaseURL ||
       !supabaseAnonKey
     ) {
-
       console.error(
-        "Missing Supabase authentication configuration"
+        "Missing Supabase authentication configuration."
       );
 
       return res.status(500).json({
         error:
-          "Identity verification is not configured."
+          "Server authentication configuration is missing."
       });
     }
 
-
     const authorization =
       req.headers.authorization;
-
 
     if (
       !authorization ||
@@ -539,29 +438,24 @@ async function requireSupabaseUser(
         "Bearer "
       )
     ) {
-
       return res.status(401).json({
         error:
-          "Authentication required."
+          "Missing authorization token."
       });
     }
-
 
     const accessToken =
       authorization.substring(
         "Bearer ".length
       );
 
-
     const response =
       await fetch(
         `${supabaseURL}/auth/v1/user`,
         {
-
           method: "GET",
 
           headers: {
-
             apikey:
               supabaseAnonKey,
 
@@ -571,82 +465,104 @@ async function requireSupabaseUser(
         }
       );
 
+    const text =
+      await response.text();
 
     if (!response.ok) {
+      console.error(
+        "Supabase user validation failed:",
+        response.status,
+        text
+      );
 
       return res.status(401).json({
         error:
-          "Invalid or expired session."
+          "Your session is invalid or expired. Please log in again."
       });
     }
-
 
     const user =
-      await response.json();
-
+      text
+        ? JSON.parse(text)
+        : null;
 
     if (!user?.id) {
-
       return res.status(401).json({
         error:
-          "Invalid authenticated user."
+          "Unable to identify the authenticated user."
       });
     }
-
 
     req.supabaseUser =
       user;
 
-
     next();
-
-
-  } catch (err) {
-
+  } catch (error) {
     console.error(
       "Supabase authentication error:",
-      err
+      error
     );
 
-    return res.status(401).json({
+    return res.status(500).json({
       error:
-        "Authentication failed."
+        "Unable to validate the current user."
     });
   }
 }
 
+// MARK: - Stripe Identity Webhook Handling
 
-// ======================================================
-// SERVER-ONLY SUPABASE IDENTITY UPDATE
-// ======================================================
+async function handleIdentityStatusChange(
+  verificationSession,
+  status
+) {
+  const userId =
+    verificationSession
+      ?.metadata
+      ?.user_id;
+
+  if (!userId) {
+    console.error(
+      "Identity verification session missing user_id metadata:",
+      verificationSession?.id
+    );
+
+    return;
+  }
+
+  await updateIdentityStatus(
+    userId,
+    status
+  );
+
+  console.log(
+    `Identity status updated: ${userId} -> ${status}`
+  );
+}
+
+// MARK: - Supabase Identity Status Update
 
 async function updateIdentityStatus(
   userId,
   status
 ) {
-
   requireSupabaseServerConfig();
-
 
   const url =
     new URL(
       `${supabaseURL}/rest/v1/profiles`
     );
 
-
   url.searchParams.set(
     "id",
     `eq.${userId}`
   );
 
-
   const response =
     await fetch(url, {
-
       method: "PATCH",
 
       headers: {
-
         apikey:
           supabaseServiceRoleKey,
 
@@ -660,36 +576,34 @@ async function updateIdentityStatus(
           "return=minimal"
       },
 
-      body:
-        JSON.stringify({
-          identity_verification_status:
-            status
-        })
+      body: JSON.stringify({
+        identity_verification_status:
+          status
+      })
     });
 
+  const text =
+    await response.text();
 
   if (!response.ok) {
-
-    const text =
-      await response.text();
-
-
     throw new Error(
-      `Supabase identity update failed: ${text}`
+      `Supabase identity status update failed (${response.status}): ${text}`
     );
   }
 }
 
-
-// ======================================================
-// CONFIG CHECK
-// ======================================================
+// MARK: - Configuration Validation
 
 function requireSupabaseServerConfig() {
-
   if (!supabaseURL) {
     throw new Error(
       "Missing SUPABASE_URL"
+    );
+  }
+
+  if (!supabaseAnonKey) {
+    throw new Error(
+      "Missing SUPABASE_ANON_KEY"
     );
   }
 
@@ -700,21 +614,13 @@ function requireSupabaseServerConfig() {
   }
 }
 
-
-// ======================================================
-// START SERVER
-// ======================================================
+// MARK: - Start Server
 
 const PORT =
   process.env.PORT || 4242;
 
-
-app.listen(
-  PORT,
-  () => {
-
-    console.log(
-      `Server running on port ${PORT}`
-    );
-  }
-);
+app.listen(PORT, () => {
+  console.log(
+    `Server running on port ${PORT}`
+  );
+});
